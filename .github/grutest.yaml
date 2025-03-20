@@ -1,0 +1,13 @@
+version: "0.1"
+global:
+  setup:
+    - pnpm install
+pipeline:
+  runTest:
+    exec:
+      - npx vitest run {{testFilePath}}
+settings:
+  exportFunctionOrClass: allow
+  testPlacementStrategies:
+    - type: co-located
+      testFilePattern: "{{sourceFileName}}.spec.ts"
